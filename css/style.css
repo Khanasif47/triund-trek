@@ -1,0 +1,272 @@
+/* =============================
+   GLOBAL RESET
+============================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f5f5;
+  color: #111;
+  overflow-x: hidden;
+}
+
+/* =============================
+   PAGE TRANSITION
+============================= */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: #f5f5f5;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.page-transition.active {
+  opacity: 1;
+}
+
+/* =============================
+   HERO SECTION
+============================= */
+.hero {
+  height: 100vh;
+  background: url("../images/hero/hero.jpg") center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.18em;
+}
+
+.hero p {
+  margin-top: 12px;
+  opacity: 0.85;
+}
+
+/* =============================
+   SECTIONS
+============================= */
+.section {
+  padding: 80px 6vw;
+}
+
+.center {
+  text-align: center;
+}
+
+h1, h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-bottom: 12px;
+}
+
+p {
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* =============================
+   MEDIA GRID (MASONRY)
+============================= */
+.media-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .media-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .media-grid {
+    column-count: 1;
+  }
+}
+
+/* =============================
+   MEDIA ITEM
+============================= */
+.media-item {
+  position: relative;
+  margin-bottom: 20px;
+  break-inside: avoid;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ddd;
+  cursor: pointer;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.media-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.media-item img,
+.media-item video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================
+   GRADIENT OVERLAY
+============================= */
+.media-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2),
+    transparent
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* =============================
+   MEDIA LABEL (FIXED)
+============================= */
+.media-label {
+  position: absolute;
+  bottom: 18px;
+  left: 18px;
+  z-index: 3;
+
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* =============================
+   LIGHTBOX
+============================= */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+#lightbox.show {
+  display: flex;
+}
+
+#lightbox-content img,
+#lightbox-content video {
+  max-width: 95%;
+  max-height: 90vh;
+  border-radius: 16px;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 2.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =============================
+   FOOTER
+============================= */
+footer {
+  padding: 40px;
+  text-align: center;
+  opacity: 0.6;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+}
+/* =====================
+   CREDITS SECTION
+===================== */
+
+.credits {
+  padding: 80px 8% 60px;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+.credits h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.credits p {
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-links a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.social-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #111;
+  transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+  width: 100%;
+}
+
