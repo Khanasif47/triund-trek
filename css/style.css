@@ -92,9 +92,10 @@ p {
    MEDIA GRID (MASONRY)
 ============================= */
 .media-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  column-count: 3;
+  column-gap: 20px;
+}
+
 }
 @media (max-width: 900px) {
   .media-grid {
